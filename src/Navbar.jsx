@@ -4,12 +4,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Navbar = () => {
   const [theme, setTheme] = useState("light-theme");
-  function toggle(e) {
-    if (theme === "light-theme") {
-      setTheme("dark-theme");
-    } else {
-      setTheme("light-theme");
-    }
+  function toggle() {
+    setTheme((theme) => (theme === "light-theme" ? "dark-theme" : "light-theme"))
   }
   useEffect(() => {
     document.body.className = theme;
@@ -21,8 +17,8 @@ const Navbar = () => {
         <h1 className="header1">ReactFacts</h1>
       </div>
       <div className="toggler">
-        <input type="checkbox" name="" id="check" onClick={() => toggle()} />
-        <label htmlFor="check" className="check-btn"></label>
+        <input type="checkbox" name="" id="check" onClick={toggle} />
+        <label htmlFor="check" className="check-btn" alt="toggle button" />
       </div>
     </div>
   );
